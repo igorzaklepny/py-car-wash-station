@@ -24,6 +24,8 @@ class CarWashStation:
         return sum(income_list)
 
     def calculate_washing_price(self, car: Car) -> float:
+        if self.distance_from_city_center == 0:
+            raise ValueError("The distance can't be zero.")
         price = car.comfort_class * (self.clean_power - car.clean_mark) * \
             (self.average_rating / self.distance_from_city_center)
         return round(price, 1)
